@@ -4,10 +4,11 @@
 
 > Erika Sejje Condori
 
-## Ejecucion
+# Ejecucion
 
-# Data Access APIs
-https://github.com/esejjec/IoT_Cap9/blob/main/img/figure10.png
+## Data Access APIs
+https://raw.githubusercontent.com/esejjec/IoT_Cap9/main/img/figure10.png
+
 > curl -X GET "http://localhost:1880/get/topicLike/timestamp/payloadLike/payload/last/5"
 
 > curl -X GET "http://localhost:1880/get/topicLike/timesta*/payloadLike/*/last/2"
