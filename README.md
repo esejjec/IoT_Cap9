@@ -32,7 +32,7 @@
 
 > curl -X GET "http://localhost:1880/get/timestamp/during/1638085554.286/last/5"
 
-![curl](https://github.com/esejjec/IoT_Cap9/blob/main/img/curl_topicLike.png?raw=true)
+![curl](https://github.com/esejjec/IoT_Cap9/blob/main/img/curl_add.png?raw=true)
 
 ![Adding Time-Based Filters](https://github.com/esejjec/IoT_Cap9/blob/main/img/figure21.png?raw=true)
 
