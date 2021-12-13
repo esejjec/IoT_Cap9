@@ -42,7 +42,7 @@
 
 > curl -X GET "http://localhost:1880/get/timestamp/last/5"
 
-> curl -X GET "http://localhost:1880/delete/timestamp/id/4"
+> curl -X GET "http://localhost:1880/delete/timestamp/id/3"
 
 ![curl](https://github.com/esejjec/IoT_Cap9/blob/main/img/curl_delete.png?raw=true)
 
