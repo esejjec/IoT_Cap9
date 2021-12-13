@@ -34,6 +34,7 @@
 ## Data Deletion APIs
 ![Deletes](https://github.com/esejjec/IoT_Cap9/blob/main/img/figure30.png?raw=true)
 > curl -X GET "http://localhost:1880/get/timestamp/last/5"
+
 > curl -X GET "http://localhost:1880/delete/timestamp/id/4"
 ![curl](https://github.com/esejjec/IoT_Cap9/blob/main/img/curl_delete.png?raw=true)
 ![Delete](https://github.com/esejjec/IoT_Cap9/blob/main/img/figure31.png?raw=true)
