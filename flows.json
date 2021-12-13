@@ -1,0 +1,99 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0ebf90243f6b6401",
+        "type": "mysql",
+        "z": "f6f2187d.f17ca8",
+        "mydb": "cc2697137885091e",
+        "name": "",
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "8001ed74bbb40a2a"
+            ]
+        ]
+    },
+    {
+        "id": "656f2d7faad792b8",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "create query",
+        "func": "// if no authentication filter defined or available\n// set the default value as 1\nif(!msg.req.authFilter)\n    msg.req.authFilter = 1;\n// wildcard used for API query is * and this needs to be converted into SQL wildcard character %\nmsg.topic = \"SELECT id,topic,payload,timestamp\" +\n\t\t\" FROM thingData WHERE\" +\n\t\t\" topic LIKE '\" + msg.req.params.topic.replace(/\\*/g, \"%\") + \"'\" +\n\t\t\" AND\" +\n\t\t\" payload LIKE '\" + msg.req.params.payload.replace(/\\*/g, \"%\") + \"'\" +\n\t\t\" AND deleted=0\" +\n\t\t\" AND (\" + msg.req.authFilter + \")\" +\n\t\t\" ORDER BY ID DESC\" +\n\t\t\" LIMIT \" + msg.req.params.count + \";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 220,
+        "wires": [
+            [
+                "0ebf90243f6b6401"
+            ]
+        ]
+    },
+    {
+        "id": "8001ed74bbb40a2a",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "prepare response",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 280,
+        "wires": [
+            [
+                "728e0d6aaa1d340f"
+            ]
+        ]
+    },
+    {
+        "id": "728e0d6aaa1d340f",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a05c8325e3692117",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "get/topicLike/:topic/payloadLike/:payload/last/:count",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "656f2d7faad792b8"
+            ]
+        ]
+    },
+    {
+        "id": "cc2697137885091e",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "localhost",
+        "port": "3306",
+        "db": "tSeriesDB",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
